@@ -48,6 +48,7 @@ Logon Type: 2 (Interactive)
 Failure Reason: Unknown username or bad password
 
 Source Network Address: 127.0.0.1
+![4625 Failed Logons](screenshots/4625-failed-logons.png)
 
 After multiple failed attempts, a successful login was recorded.
 
