@@ -110,3 +110,28 @@ SOC-style investigation workflow
 Technique: T1110 – Brute Force
 
 Although conducted locally, the investigation methodology aligns with brute-force authentication detection practices.
+
+🔎 Detection Logic (SOC Perspective)
+
+If this activity were observed in a production environment, the following detection logic could be implemented:
+
+Potential Brute Force Indicator:
+
+Multiple Event ID 4625 entries
+
+Same TargetUserName
+
+Within short time window (e.g., 5–10 attempts in under 2 minutes)
+
+Escalation Criteria:
+
+4625 failures followed by 4624 success
+
+Logon Type 3 (Network) or 10 (Remote Desktop)
+
+External Source IP address
+
+Example detection condition:
+
+If more than 5 failed authentication attempts occur for the same user within 2 minutes, trigger security alert.
+This logic aligns with authentication monitoring best practices in SOC environments.
