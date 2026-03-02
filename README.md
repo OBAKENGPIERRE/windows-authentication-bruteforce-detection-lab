@@ -63,6 +63,7 @@ Logon Type: 2 (Interactive)
 Source Network Address: 127.0.0.1
 
 Timestamp correlation confirmed successful authentication following repeated failures
+![4624 Successful Logon](screenshots/4624-successful-logon.png)
 
 🔎 Investigation Methodology
 
