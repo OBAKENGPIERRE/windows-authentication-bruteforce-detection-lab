@@ -66,6 +66,7 @@ Timestamp correlation confirmed successful authentication following repeated fai
 ![4624 Successful Logon](screenshots/4624-successful-logon.png)
 
 🔎 Investigation Methodology
+![Detailed Event View](screenshots/detailed-event-view.png)
 
 The investigation process included:
 
