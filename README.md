@@ -163,6 +163,7 @@ nxc smb 192.168.100.128 -u testuser --password-file /usr/share/wordlists/rockyou
 Observed Security Events
 
 Multiple authentication failures were recorded:
+![Network Bruteforce](screenshots/4625-network-bruteforce.png)
 
 Event ID 4625 – Failed Logon
 
@@ -173,12 +174,13 @@ Logon Type: 3 (Network)
 Account Name: testuser
 
 Source Network Address: 192.168.100.129
-![Detailed Event View](screenshots/4625-network-bruteforce.png)
 
+![4625 Network Event Details](screenshots/4625-network-event-details.png)
 This confirms the authentication attempts originated from a remote system.
 
 Account Lockout
 
+![4625 Account Lockout Event](screenshots/account-lockout-event.png)
 Windows eventually locked the account after repeated failures.
 
 Event ID 4740 – Account Locked Out
