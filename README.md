@@ -138,3 +138,49 @@ Example detection condition:
 
 If more than 5 failed authentication attempts occur for the same user within 2 minutes, trigger security alert.
 This logic aligns with authentication monitoring best practices in SOC environments.
+
+
+
+
+Network Brute Force Simulation (Remote Authentication Attack)
+
+A second test scenario simulated a remote authentication attack from a Kali Linux system against the Windows target machine.
+
+The attack was executed using NetExec (nxc) to attempt multiple password guesses against the SMB service.
+
+Attack Source
+
+Kali Linux attacker machine
+IP Address: 192.168.100.129
+
+Target
+
+Windows 11 system
+IP Address: 192.168.100.128
+
+Tool Used
+nxc smb 192.168.100.128 -u testuser --password-file /usr/share/wordlists/rockyou.txt
+Observed Security Events
+
+Multiple authentication failures were recorded:
+
+Event ID 4625 – Failed Logon
+
+Key indicators:
+
+Logon Type: 3 (Network)
+
+Account Name: testuser
+
+Source Network Address: 192.168.100.129
+![Detailed Event View](screenshots/4625-network-bruteforce.png)
+
+This confirms the authentication attempts originated from a remote system.
+
+Account Lockout
+
+Windows eventually locked the account after repeated failures.
+
+Event ID 4740 – Account Locked Out
+
+This behavior demonstrates how repeated brute-force attempts can trigger defensive account lockout policies.
