@@ -1,7 +1,15 @@
 🔐 Windows Authentication Monitoring & Brute Force Detection Lab
 📌 Overview
 
-This project simulates authentication failures on a Windows 11 system and analyzes Security Event Logs to detect potential brute-force activity.
+This project simulates both local and remote brute-force authentication attempts against a Windows system and demonstrates how these attacks appear in Windows Security logs.
+
+The lab analyzes key security events including:
+
+- Event ID 4625 – Failed Logon
+- Event ID 4624 – Successful Logon
+- Event ID 4740 – Account Lockout
+
+Attack simulations were performed from a Kali Linux system using password-guessing techniques against SMB authentication.
 
 The objective was to practice authentication monitoring, log correlation, and structured incident investigation in a controlled SOC lab environment.
 
