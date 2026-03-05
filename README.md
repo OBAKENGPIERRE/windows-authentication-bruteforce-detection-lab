@@ -71,22 +71,15 @@ Simulates the execution of an encoded PowerShell command commonly used in filele
 Event ID 4688 – Process Creation
 Event ID 4104 – PowerShell Script Block Logging
 
-Key skills demonstrated
-
-* Detecting suspicious PowerShell activity
-* Investigating encoded command execution
-* Analyzing script block logs
-* Understanding attacker PowerShell techniques
-
----
-
 ## Skills Demonstrated
 
-Windows Event Log Analysis
-PowerShell Attack Detection
-Authentication Attack Investigation
-Incident Investigation Workflow
-Security Log Monitoring
+- Windows Event Log Analysis
+- Authentication Attack Detection
+- PowerShell Attack Investigation
+- Incident Investigation Workflow
+- Log Correlation and Timeline Analysis
+- Security Monitoring Techniques
+---
 
 ## Lab 1 – Investigation: Windows Authentication Brute Force Detection
 
