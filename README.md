@@ -1,4 +1,4 @@
-🔐 Windows Security Detection Labs
+🔐 Windows Security Detection Labs             
 This repository contains hands-on cybersecurity labs demonstrating how common attack techniques can be detected using Windows event logs.
 
 ## Lab 1 – Windows Authentication Brute Force Detection
