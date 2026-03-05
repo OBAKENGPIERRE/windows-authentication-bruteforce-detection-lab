@@ -19,10 +19,12 @@ Each lab includes an attack simulation, log investigation, and detection analysi
 ## Table of Contents
 
 * [Overview](#overview)
+* [Lab Architecture](#lab-architecture)
+* [Labs Included](#labs-included)
 * [Lab Environment](#lab-environment)
+* [Skills Demonstrated](#skills-demonstrated)
 * [Lab 1 – Windows Authentication Brute Force Detection](#lab-1--windows-authentication-brute-force-detection)
 * [Lab 2 – Suspicious PowerShell Encoded Command Detection](#lab-2--suspicious-powershell-encoded-command-detection)
-* [Skills Demonstrated](#skills-demonstrated)
 
 
 ## Lab Architecture
