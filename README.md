@@ -1,8 +1,29 @@
 # Windows Security Detection Labs
 
+## Overview
+
+This repository contains hands-on cybersecurity detection labs designed to simulate real-world attacker behavior and demonstrate how Security Operations Center (SOC) analysts investigate suspicious activity using Windows event logs.
+
+Each lab focuses on a specific attack technique and walks through the process of:
+
+- Simulating attacker activity
+- Investigating Windows security logs
+- Identifying indicators of compromise
+- Understanding how defenders detect malicious behavior
+
+The labs are performed in a controlled environment using a Windows workstation and a Kali Linux attacker system.
 This repository contains hands-on cybersecurity labs demonstrating how common attack techniques can be detected using Windows Event Logs. The labs simulate real attacker behavior and show how Security Operations Center (SOC) analysts investigate suspicious activity.
 
 Each lab includes an attack simulation, log investigation, and detection analysis.
+
+## Table of Contents
+
+* [Overview](#overview)
+* [Lab Environment](#lab-environment)
+* [Lab 1 – Windows Authentication Brute Force Detection](#lab-1--windows-authentication-brute-force-detection)
+* [Lab 2 – Suspicious PowerShell Encoded Command Detection](#lab-2--suspicious-powershell-encoded-command-detection)
+* [Skills Demonstrated](#skills-demonstrated)
+
 
 ## Lab Architecture
 
@@ -70,7 +91,7 @@ Authentication Attack Investigation
 Incident Investigation Workflow
 Security Log Monitoring
 
-## Lab 1 – Windows Authentication Brute Force Detection
+## Lab 1 – Investigation: Windows Authentication Brute Force Detection
 
 This project simulates both local and remote brute-force authentication attempts against a Windows system and demonstrates how these attacks appear in Windows Security logs.
 
@@ -267,7 +288,7 @@ Event ID 4740 – Account Locked Out
 This behavior demonstrates how repeated brute-force attempts can trigger defensive account lockout policies.
 
 
-## Lab 2 – Suspicious PowerShell Encoded Command Detection
+## Lab 2 – Investigation: Suspicious PowerShell Encoded Command Detection
 
 Overview
 
@@ -406,3 +427,14 @@ Proper logging configuration significantly improves visibility into PowerShell-b
 ![Encoded Command](screenshots/4688-encoded-command.png)
 
 ![Script Block Logging](screenshots/4104-scriptblock-decoded.png)
+
+
+## Future Lab Expansion
+
+Additional detection labs will be added to this repository to simulate other common attacker techniques, including:
+
+- Persistence mechanisms
+- Privilege escalation
+- Scheduled task abuse
+- Registry-based persistence
+- Malware execution detection
