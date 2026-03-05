@@ -4,6 +4,10 @@ This repository contains hands-on cybersecurity labs demonstrating how common at
 
 Each lab includes an attack simulation, log investigation, and detection analysis.
 
+## Lab Architecture
+
+![Lab Architecture](screenshots/lab-network-architecture.png)
+
 ---
 
 ## Labs Included
