@@ -27,7 +27,16 @@ Each lab includes an attack simulation, log investigation, and detection analysi
 * [Lab 2 – Suspicious PowerShell Encoded Command Detection](#lab-2--suspicious-powershell-encoded-command-detection)
 
 
-## Lab Architecture
+## Lab Environment
+
+Attacker Machine
+Kali Linux VM
+
+Target Machine
+Windows Workstation
+
+Network
+Local LAN environment used to simulate attacker-target interaction.
 
 ![Lab Architecture](screenshots/lab-network-architecture.png)
 
@@ -69,19 +78,6 @@ Key skills demonstrated
 * Investigating encoded command execution
 * Analyzing script block logs
 * Understanding attacker PowerShell techniques
-
----
-
-## Lab Environment
-
-Attacker Machine
-Kali Linux VM
-
-Target Machine
-Windows Workstation
-
-Network
-Local LAN environment used to simulate attacker-target interaction.
 
 ---
 
