@@ -19,9 +19,8 @@ Each lab includes an attack simulation, log investigation, and detection analysi
 ## Table of Contents
 
 * [Overview](#overview)
-* [Lab Architecture](#lab-architecture)
-* [Labs Included](#labs-included)
 * [Lab Environment](#lab-environment)
+* [Labs Included](#labs-included)
 * [Skills Demonstrated](#skills-demonstrated)
 * [Lab 1 – Windows Authentication Brute Force Detection](#lab-1--windows-authentication-brute-force-detection)
 * [Lab 2 – Suspicious PowerShell Encoded Command Detection](#lab-2--suspicious-powershell-encoded-command-detection)
@@ -29,13 +28,13 @@ Each lab includes an attack simulation, log investigation, and detection analysi
 
 ## Lab Environment
 
-Attacker Machine
+Attacker Machine:
 Kali Linux VM
 
-Target Machine
+Target Machine:
 Windows Workstation
 
-Network
+Network:
 Local LAN environment used to simulate attacker-target interaction.
 
 ![Lab Architecture](screenshots/lab-network-architecture.png)
