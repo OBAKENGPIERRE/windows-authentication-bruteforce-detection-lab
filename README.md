@@ -55,9 +55,9 @@ Event ID 4740 – Account Lockout
 
 Key skills demonstrated
 
-* Authentication log analysis
-* Identifying brute force attack patterns
-* Investigating account lockout events
+* Authentication log analysis                                                                
+* Identifying brute force attack patterns                                  
+* Investigating account lockout events                                            
 * Understanding logon types and source addresses
 
 ---
