@@ -1,5 +1,70 @@
-🔐 Windows Security Detection Labs             
-This repository contains hands-on cybersecurity labs demonstrating how common attack techniques can be detected using Windows event logs.
+# Windows Security Detection Labs
+
+This repository contains hands-on cybersecurity labs demonstrating how common attack techniques can be detected using Windows Event Logs. The labs simulate real attacker behavior and show how Security Operations Center (SOC) analysts investigate suspicious activity.
+
+Each lab includes an attack simulation, log investigation, and detection analysis.
+
+---
+
+## Labs Included
+
+### Lab 1 – Windows Authentication Brute Force Detection
+
+Simulates multiple failed login attempts against a Windows system and investigates the resulting security logs.
+
+**Logs analyzed**
+
+Event ID 4625 – Failed Logon
+Event ID 4624 – Successful Logon
+Event ID 4740 – Account Lockout
+
+Key skills demonstrated
+
+* Authentication log analysis
+* Identifying brute force attack patterns
+* Investigating account lockout events
+* Understanding logon types and source addresses
+
+---
+
+### Lab 2 – Suspicious PowerShell Encoded Command Detection
+
+Simulates the execution of an encoded PowerShell command commonly used in fileless malware attacks and investigates the resulting logs.
+
+**Logs analyzed**
+
+Event ID 4688 – Process Creation
+Event ID 4104 – PowerShell Script Block Logging
+
+Key skills demonstrated
+
+* Detecting suspicious PowerShell activity
+* Investigating encoded command execution
+* Analyzing script block logs
+* Understanding attacker PowerShell techniques
+
+---
+
+## Lab Environment
+
+Attacker Machine
+Kali Linux VM
+
+Target Machine
+Windows Workstation
+
+Network
+Local LAN environment used to simulate attacker-target interaction.
+
+---
+
+## Skills Demonstrated
+
+Windows Event Log Analysis
+PowerShell Attack Detection
+Authentication Attack Investigation
+Incident Investigation Workflow
+Security Log Monitoring
 
 ## Lab 1 – Windows Authentication Brute Force Detection
 
