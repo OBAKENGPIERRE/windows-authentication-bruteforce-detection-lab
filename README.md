@@ -419,6 +419,116 @@ Proper logging configuration significantly improves visibility into PowerShell-b
 ![Script Block Logging](screenshots/4104-scriptblock-decoded.png)
 
 
+## Lab 3 – Windows Persistence Detection (Registry Run Key)
+Overview
+
+Attackers often establish persistence mechanisms to maintain access to compromised systems even after a reboot or user logoff. One common persistence technique involves modifying Windows registry Run keys so that malicious scripts execute automatically when a user logs in.
+
+This lab simulates the installation of persistence using a registry Run key and demonstrates how Security Operations Center (SOC) analysts can detect the behavior through Windows security logs.
+
+The investigation focuses on identifying persistence artifacts and detecting suspicious PowerShell execution.
+
+MITRE ATT&CK Technique:
+
+T1547.001 – Registry Run Keys / Startup Folder
+
+Payload Creation: 
+
+A PowerShell payload script was created to simulate a malicious script executed by attackers.
+
+File location:
+
+C:\Temp\payload.ps1
+
+Script content:
+
+Write-Output "Persistence Lab Executed"
+Start-Sleep 5
+
+Explanation:
+
+Write-Output prints text to the console to confirm execution.
+Start-Sleep introduces a delay to simulate real attacker scripts which often include timing mechanisms.
+
+Screenshot:
+
+Persistence Installation
+
+Persistence was installed by creating a registry Run key using PowerShell.
+
+Command used:
+
+New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "SystemUpdater" -Value "powershell.exe -ExecutionPolicy Bypass -File C:\Temp\payload.ps1"
+
+Explanation:
+
+HKCU Run Key
+Programs in this registry location automatically execute whenever the user logs in.
+
+ExecutionPolicy Bypass
+Allows PowerShell scripts to run without restrictions.
+
+payload.ps1
+Simulates malicious code execution.
+
+This technique allows attackers to maintain long-term access to a compromised system.
+
+Screenshot:
+
+Registry Artifact Investigation
+
+The persistence mechanism can be observed in the Windows registry.
+
+Location:
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+
+Registry entries observed:
+
+SystemUpdater
+UpdaterService
+
+Both entries execute the PowerShell payload automatically during user login.
+
+Screenshot:
+
+Persistence Execution
+
+After system restart or user login, Windows automatically executes the registry Run key entries.
+
+This resulted in PowerShell launching the payload script.
+
+The execution generated a process creation event in Windows Security logs.
+
+Event ID:
+
+4688 – Process Creation
+
+Key indicators observed:
+
+Process Name
+powershell.exe
+
+Command Line
+
+powershell.exe -ExecutionPolicy Bypass -File C:\Temp\payload.ps1
+
+This confirms that the persistence mechanism successfully executed the payload.
+
+Screenshot:
+
+Detection Logic (SOC Perspective)
+
+Security analysts can detect this behavior by monitoring:
+
+Suspicious PowerShell execution
+PowerShell commands containing ExecutionPolicy Bypass
+Unexpected registry Run key entries
+PowerShell processes launching during user login
+
+Security monitoring tools such as SIEM platforms can correlate registry changes and PowerShell process creation events to identify persistence mechanisms.
+
+
 ## Future Lab Expansion
 
 Additional detection labs will be added to this repository to simulate other common attacker techniques, including:
