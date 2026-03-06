@@ -24,6 +24,7 @@ Each lab includes an attack simulation, log investigation, and detection analysi
 * [Skills Demonstrated](#skills-demonstrated)
 * [Lab 1 – Windows Authentication Brute Force Detection](#lab-1--windows-authentication-brute-force-detection)
 * [Lab 2 – Suspicious PowerShell Encoded Command Detection](#lab-2--suspicious-powershell-encoded-command-detection)
+* [Lab 3 – Windows Persistence Detection (Registry Run Key)](#lab-3--Windows-Persistance-Detection(Registry-Keys))
 
 
 ## Lab Environment
