@@ -79,6 +79,12 @@ Event ID 4104 – PowerShell Script Block Logging
 - Incident Investigation Workflow
 - Log Correlation and Timeline Analysis
 - Security Monitoring Techniques
+- Windows Persistence Detection
+- Registry Artifact Investigation
+- PowerShell Execution Analysis
+- PowerShell Execution Analysis
+- Security Event Log Monitoring
+- MITRE ATT&CK Technique Mapping
 ---
 
 ## Lab 1 – Investigation: Windows Authentication Brute Force Detection
@@ -450,7 +456,7 @@ Explanation:
 Write-Output prints text to the console to confirm execution.
 Start-Sleep introduces a delay to simulate real attacker scripts which often include timing mechanisms.
 
-Screenshot:
+![Payload Script](screenshots/payload-script.png)
 
 Persistence Installation
 
@@ -473,7 +479,7 @@ Simulates malicious code execution.
 
 This technique allows attackers to maintain long-term access to a compromised system.
 
-Screenshot:
+![Persistence Command](screenshots/persistence-command.png)
 
 Registry Artifact Investigation
 
@@ -490,7 +496,7 @@ UpdaterService
 
 Both entries execute the PowerShell payload automatically during user login.
 
-Screenshot:
+![Registry Entries](screenshots/registry-runkey.png)
 
 Persistence Execution
 
@@ -515,7 +521,7 @@ powershell.exe -ExecutionPolicy Bypass -File C:\Temp\payload.ps1
 
 This confirms that the persistence mechanism successfully executed the payload.
 
-Screenshot:
+![Persistence Execution](screenshots/4688-persistence-execution.png)
 
 Detection Logic (SOC Perspective)
 
@@ -533,8 +539,6 @@ Security monitoring tools such as SIEM platforms can correlate registry changes 
 
 Additional detection labs will be added to this repository to simulate other common attacker techniques, including:
 
-- Persistence mechanisms
 - Privilege escalation
 - Scheduled task abuse
-- Registry-based persistence
 - Malware execution detection
