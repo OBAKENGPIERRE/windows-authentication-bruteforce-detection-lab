@@ -546,23 +546,25 @@ Windows security logs were ingested into Microsoft Sentinel using Azure Arc and 
 
 The lab simulates a brute-force attack against a Windows system and demonstrates how the attack appears inside a SIEM environment.
 
-MITRE ATT&CK Technique:
+MITRE ATT&CK Technique:                                            
 
-T1110 – Brute Force
-Lab Architecture
-Windows Endpoint
+T1110 – Brute Force                                                                 
+
+Lab Architecture                                                             
+Windows Endpoint                                                                    
       ↓
-Azure Arc
+Azure Arc                                                                           
       ↓
-Azure Monitor Agent
+Azure Monitor Agent                                                       
       ↓
-Log Analytics Workspace
+Log Analytics Workspace                                                                      
       ↓
-Microsoft Sentinel SIEM
+Microsoft Sentinel SIEM                                                                                    
       ↓
-KQL Detection Rules
+KQL Detection Rules                                                                                
       ↓
-SOC Incident
+SOC Incident                                                                      
+
 Log Ingestion Setup
 
 The Windows system was connected to Azure using Azure Arc.
