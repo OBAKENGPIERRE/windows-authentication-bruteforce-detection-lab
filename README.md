@@ -537,7 +537,7 @@ PowerShell processes launching during user login
 Security monitoring tools such as SIEM platforms can correlate registry changes and PowerShell process creation events to identify persistence mechanisms.
 
 
-Lab 4 — SIEM Threat Detection with Microsoft Sentinel
+## Lab 4 – SIEM Threat Detection With Microsoft Sentinel
 Overview
 
 This lab demonstrates how a Security Operations Center (SOC) detects authentication attacks using a cloud SIEM platform.
