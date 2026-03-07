@@ -581,9 +581,13 @@ Security events collected included:
 
 These logs were forwarded to a Log Analytics Workspace and analyzed by Microsoft Sentinel.
 
+![Data Collection Rule](screenshots/sentinel-data-collection-rule.png)
+
 Threat Detection Query
 
 A KQL query was created to detect potential brute-force login attempts.
+
+![Sentinel KQL QUERY](screenshots/sentinel-kql-query.png)
 
 SecurityEvent                                                                             
 | where EventID == 4625
@@ -591,6 +595,8 @@ SecurityEvent
 | where FailedAttempts >= 5
 
 The query identifies accounts experiencing multiple failed login attempts within a five-minute window.
+
+![Failed Login Events](screenshots/sentinel-4625-events.png)
 
 Detection Rule
 
@@ -605,6 +611,8 @@ Alert Threshold: ≥ 1 result
 
 When the query detects multiple failed login attempts, Sentinel automatically generates a security alert.
 
+![Sentinel Detection Rule](screenshots/sentinel-bruteforce-rule.png)
+
 Incident Creation
 
 When the simulated brute-force attack was performed, the detection rule triggered and created a new incident inside Microsoft Sentinel.
@@ -615,7 +623,9 @@ Alert name
 Affected account                                                                              
 Computer name                                                                       
 Time window of attack                                                                               
-Number of failed attempts                                                          
+Number of failed attempts  
+
+![Sentinel Incident](screenshots/sentinel-bruteforce-incident.png)
 
 This demonstrates how SOC analysts identify authentication attacks using SIEM detection rules.
 
