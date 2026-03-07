@@ -582,7 +582,7 @@ A KQL query was created to detect potential brute-force login attempts.
 
 SecurityEvent                                                                             
 | where EventID == 4625
-| summarize FailedAttempts = count() by Account, Computer, bin(TimeGenerated, 5m)
+| summarize FailedAttempts = count() by Account, Computer, bin(TimeGenerated, 5m)                           
 | where FailedAttempts >= 5
 
 The query identifies accounts experiencing multiple failed login attempts within a five-minute window.
