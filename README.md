@@ -550,7 +550,8 @@ MITRE ATT&CK Technique:
 
 T1110 – Brute Force                                                                 
 
-Lab Architecture                                                             
+Lab Architecture:
+
 Windows Endpoint                                                                    
       ↓
 Azure Arc                                                                           
