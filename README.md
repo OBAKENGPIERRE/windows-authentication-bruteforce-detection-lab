@@ -606,11 +606,11 @@ When the simulated brute-force attack was performed, the detection rule triggere
 
 The incident contained:
 
-Alert name
-Affected account
-Computer name
-Time window of attack
-Number of failed attempts
+Alert name                                                         
+Affected account                                                                              
+Computer name                                                                       
+Time window of attack                                                                               
+Number of failed attempts                                                          
 
 This demonstrates how SOC analysts identify authentication attacks using SIEM detection rules.
 
