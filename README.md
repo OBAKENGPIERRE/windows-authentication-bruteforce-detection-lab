@@ -593,9 +593,9 @@ A Sentinel Analytics Rule was created using the query.
 
 Configuration:
 
-Rule Type: Scheduled Query
-Severity: Medium
-Schedule: Every 5 minutes
+Rule Type: Scheduled Query                                                           
+Severity: Medium                                                                        
+Schedule: Every 5 minutes                                                               
 Alert Threshold: ≥ 1 result
 
 When the query detects multiple failed login attempts, Sentinel automatically generates a security alert.
