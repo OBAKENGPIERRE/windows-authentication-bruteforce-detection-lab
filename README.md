@@ -537,6 +537,94 @@ PowerShell processes launching during user login
 Security monitoring tools such as SIEM platforms can correlate registry changes and PowerShell process creation events to identify persistence mechanisms.
 
 
+Lab 4 — SIEM Threat Detection with Microsoft Sentinel
+Overview
+
+This lab demonstrates how a Security Operations Center (SOC) detects authentication attacks using a cloud SIEM platform.
+
+Windows security logs were ingested into Microsoft Sentinel using Azure Arc and the Azure Monitor Agent. Detection rules were then created using Kusto Query Language (KQL) to identify brute-force authentication attempts.
+
+The lab simulates a brute-force attack against a Windows system and demonstrates how the attack appears inside a SIEM environment.
+
+MITRE ATT&CK Technique:
+
+T1110 – Brute Force
+Lab Architecture
+Windows Endpoint
+      ↓
+Azure Arc
+      ↓
+Azure Monitor Agent
+      ↓
+Log Analytics Workspace
+      ↓
+Microsoft Sentinel SIEM
+      ↓
+KQL Detection Rules
+      ↓
+SOC Incident
+Log Ingestion Setup
+
+The Windows system was connected to Azure using Azure Arc.
+The Azure Monitor Agent was installed to collect Windows Security Events.
+
+Security events collected included:
+
+4624 – Successful logon
+4625 – Failed logon
+4688 – Process creation
+
+These logs were forwarded to a Log Analytics Workspace and analyzed by Microsoft Sentinel.
+
+Threat Detection Query
+
+A KQL query was created to detect potential brute-force login attempts.
+
+SecurityEvent                                                                             
+| where EventID == 4625
+| summarize FailedAttempts = count() by Account, Computer, bin(TimeGenerated, 5m)
+| where FailedAttempts >= 5
+
+The query identifies accounts experiencing multiple failed login attempts within a five-minute window.
+
+Detection Rule
+
+A Sentinel Analytics Rule was created using the query.
+
+Configuration:
+
+Rule Type: Scheduled Query
+Severity: Medium
+Schedule: Every 5 minutes
+Alert Threshold: ≥ 1 result
+
+When the query detects multiple failed login attempts, Sentinel automatically generates a security alert.
+
+Incident Creation
+
+When the simulated brute-force attack was performed, the detection rule triggered and created a new incident inside Microsoft Sentinel.
+
+The incident contained:
+
+Alert name
+Affected account
+Computer name
+Time window of attack
+Number of failed attempts
+
+This demonstrates how SOC analysts identify authentication attacks using SIEM detection rules.
+
+Skills Demonstrated:                                                                                                                     
+
+SIEM deployment and configuration
+Azure Arc endpoint onboarding
+Security log ingestion
+KQL threat hunting
+Detection rule engineering
+SOC incident analysis
+Authentication attack detection
+
+
 ## Future Lab Expansion
 
 Additional detection labs will be added to this repository to simulate other common attacker techniques, including:
