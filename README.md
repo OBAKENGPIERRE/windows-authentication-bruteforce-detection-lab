@@ -571,6 +571,8 @@ Log Ingestion Setup
 The Windows system was connected to Azure using Azure Arc.
 The Azure Monitor Agent was installed to collect Windows Security Events.
 
+![Azure Arc Machine Connected](screenshots/sentinel-arc-machine-connected.png)
+
 Security events collected included:
 
 4624 – Successful logon
