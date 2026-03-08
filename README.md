@@ -27,6 +27,7 @@ Each lab includes an attack simulation, log investigation, and detection analysi
 * [Lab 2 – Suspicious PowerShell Encoded Command Detection](#lab-2--suspicious-powershell-encoded-command-detection)
 * [Lab 3 – Windows Persistence Detection (Registry Run Key)](#lab-3--windows-persistence-detection-registry-run-key)
 * [Lab 4 – SIEM Threat Detection with Microsoft Sentinel](#lab-4--siem-threat-detection-with-microsoft-sentinel)
+* [Lab 5 – Network Intrusion Detection using Suricata IDS](#lab-5--network-intrusion-detection-using-suricata-ids)
 
 
 ## Lab Environment
